@@ -12,7 +12,7 @@ export default function ClaimCodePage(props: { params: { code: string } }) {
         </p>
         <Link
           href="/"
-          className="bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white text-white"
+          className="bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white"
         >
           Home
         </Link>
