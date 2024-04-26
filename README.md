@@ -15,8 +15,8 @@ This is a very simple event photo sharing app for event photographers at events 
 
 ## TODO
 
-- [ ] Deploy the thing
-- [ ] Scaffold some basic ui and routes
+- [x] Deploy the thing
+- [x] Scaffold some basic ui and routes
 - [ ] Set up database
 - [ ] Attach database ui
 - [ ] Add auth
