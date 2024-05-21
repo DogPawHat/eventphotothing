@@ -1,6 +1,13 @@
 import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,8 +26,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`font-sans ${inter.variable} bg-gradient-to-b from-[#2e026d] to-[#15162c]`}
+        >
+          <header>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </header>
+          <main className="flex min-h-screen flex-col items-center justify-center ">
+            {children}
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
