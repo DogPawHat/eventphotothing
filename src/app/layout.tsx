@@ -9,6 +9,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { Card, CardContent } from "~/components/ui/card";
+import { Button, buttonVariants } from "~/components/ui/button";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,7 +35,9 @@ export default function RootLayout({
         >
           <header className="flex items-center justify-between p-2">
             <SignedOut>
-              <SignInButton />
+              <SignInButton>
+                <Button>Sign in</Button>
+              </SignInButton>
             </SignedOut>
             <SignedIn>
               <UserButton />
