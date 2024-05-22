@@ -11,7 +11,7 @@ export default function ClaimCodePage() {
         href={$path({ route: "/" })}
         className="bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white"
       >
-        Home
+        Must be logged in here
       </Link>
     </div>
   );

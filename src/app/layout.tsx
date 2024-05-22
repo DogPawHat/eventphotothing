@@ -8,6 +8,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import { Card, CardContent } from "~/components/ui/card";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({
         <body
           className={`font-sans ${inter.variable} bg-gradient-to-b from-[#2e026d] to-[#15162c]`}
         >
-          <header>
+          <header className="flex items-center justify-between p-2">
             <SignedOut>
               <SignInButton />
             </SignedOut>
