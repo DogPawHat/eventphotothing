@@ -10,6 +10,8 @@ export const env = createEnv({
     CLERK_SECRET_KEY: z.string().min(1),
     EDGEDB_INSTANCE: z.string().min(1),
     EDGEDB_SECRET_KEY: z.string().min(1),
+    UPLOADTHING_SECRET: z.string().min(1),
+    UPLOADTHING_APP_ID: z.string().min(1),
   },
 
   /**
