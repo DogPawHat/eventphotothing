@@ -8,8 +8,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { Card, CardContent } from "~/components/ui/card";
-import { Button, buttonVariants } from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 
 const inter = Inter({
   subsets: ["latin"],
