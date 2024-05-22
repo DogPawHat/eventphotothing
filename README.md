@@ -18,7 +18,7 @@ This is a very simple event photo sharing app for event photographers at events 
 - [x] Deploy the thing
 - [x] Scaffold some basic ui and routes
 - [x] Set up database
-- [ ] Add auth
+- [x] Add auth
 - [ ] image upload
 - [ ] claim process and codes
 - [ ] delete unclaimed photos
