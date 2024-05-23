@@ -7,7 +7,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "prebuild": "npx @edgedb/generate edgeql-js"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.1.0",
