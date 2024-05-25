@@ -1,7 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
+import e from "~~/dbschema/edgeql-js";
 
+import { client } from "~/data/client";
 const f = createUploadthing();
 
 // FileRouter for your app, can contain multiple FileRoutes
@@ -28,8 +30,39 @@ export const ourFileRouter = {
 
       console.log("file url", file.url);
 
-      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-      return { uploadedBy: metadata.userId };
+      try {
+        const selectPhotographer = e.select(e.Photographer, () => ({
+          filter_single: {
+            clerk_id: metadata.userId,
+          },
+        }));
+
+        const insertPhoto = e.insert(e.Photo, {
+          file_key: file.key,
+          photographer: selectPhotographer,
+          is_claimed: false,
+        });
+
+        const selectPhoto = e.select(insertPhoto, () => ({
+          id: true,
+          file_key: true,
+        }));
+
+        const selectPhotoResult = await selectPhoto.run(client);
+
+        return {
+          uploadedBy: metadata.userId,
+          fileId: selectPhotoResult.id,
+          fileKey: selectPhotoResult.file_key,
+        };
+      } catch (e) {
+        console.log(e);
+        throw new UploadThingError({
+          message: "File not saved to db",
+          code: "INTERNAL_SERVER_ERROR",
+          cause: e as Error,
+        });
+      }
     }),
 } satisfies FileRouter;
 

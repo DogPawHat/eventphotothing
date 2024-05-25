@@ -26,7 +26,7 @@ export default function HomePage() {
     <>
       <section className="container max-w-3xl space-y-6 py-12">
         <div className="space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
             Claim Your Photos
           </h1>
         </div>
@@ -40,7 +40,7 @@ export default function HomePage() {
       <div>
         <Link
           href="/photographers"
-          className="inline-flex items-center text-white"
+          className="inline-flex items-center"
         >
           Photographers section
           <ChevronRightIcon className="h-4 w-4" />

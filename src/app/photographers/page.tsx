@@ -13,12 +13,7 @@ export default async function ClaimCodePage() {
         push your photos here
       </h1>
       <PhotoUploader />
-      <Link
-        href={$path({ route: "/" })}
-        className="bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white"
-      >
-        Must be logged in here
-      </Link>
+      <Link href={$path({ route: "/" })}>Must be logged in here</Link>
     </div>
   );
 }

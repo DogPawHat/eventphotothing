@@ -35,7 +35,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`font-sans ${inter.variable} bg-gradient-to-b from-[#2e026d] to-[#15162c]`}
+          className={`dark font-sans ${inter.variable} bg-background text-foreground`}
         >
           <NextSSRPlugin
             /**
