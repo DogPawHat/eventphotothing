@@ -1,9 +1,9 @@
 import { auth } from "@clerk/nextjs/server";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
-import e from "~~/dbschema/edgeql-js";
+import { db } from "~/server/db";
+import { images } from "~/server/db/schema";
 
-import { client } from "~/data/client";
 const f = createUploadthing();
 
 // FileRouter for your app, can contain multiple FileRoutes
@@ -31,29 +31,16 @@ export const ourFileRouter = {
       console.log("file url", file.url);
 
       try {
-        const selectPhotographer = e.select(e.Photographer, () => ({
-          filter_single: {
-            clerk_id: metadata.userId,
-          },
-        }));
-
-        const insertPhoto = e.insert(e.Photo, {
-          file_key: file.key,
-          photographer: selectPhotographer,
-          is_claimed: false,
+        await db.insert(images).values({
+          name: file.name,
+          url: file.url,
+          userId: metadata.userId,
         });
-
-        const selectPhoto = e.select(insertPhoto, () => ({
-          id: true,
-          file_key: true,
-        }));
-
-        const selectPhotoResult = await selectPhoto.run(client);
 
         return {
           uploadedBy: metadata.userId,
-          fileId: selectPhotoResult.id,
-          fileKey: selectPhotoResult.file_key,
+          fileId: 1,
+          fileKey: "",
         };
       } catch (e) {
         console.log(e);
