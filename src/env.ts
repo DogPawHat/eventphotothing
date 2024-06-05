@@ -1,11 +1,6 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
-import { loadEnvConfig } from '@next/env';
- 
-const projectDir = process.cwd();
-loadEnvConfig(projectDir);
-
 export const env = createEnv({
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app
@@ -13,7 +8,6 @@ export const env = createEnv({
    */
   server: {
     CLERK_SECRET_KEY: z.string().min(1),
-    CLERK_PEM_PUBLIC_KEY: z.string().min(1),
     UPLOADTHING_SECRET: z.string().min(1),
     UPLOADTHING_APP_ID: z.string().min(1),
     NODE_ENV: z
