@@ -40,13 +40,5 @@ export async function deleteImage(id: number) {
     .delete(images)
     .where(and(eq(images.id, id), eq(images.userId, user.userId)));
 
-  analyticsServerClient.capture({
-    distinctId: user.userId,
-    event: "delete image",
-    properties: {
-      imageId: id,
-    },
-  });
-
   redirect("/");
 }
